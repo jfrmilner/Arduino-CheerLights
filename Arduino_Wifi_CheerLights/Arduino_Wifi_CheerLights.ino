@@ -180,7 +180,7 @@ void loop() {
     oldC = newC;
   }
   
- // trigger effect
+  // trigger effect
   if (noChangeCount >= 2) {
     unsigned long endTime = millis() + postingInterval;
 
@@ -361,7 +361,7 @@ void handle_input(uint8_t c){
 
   /* 
   otherwise we have an input character
-   */
+  */
   if (input_len <= 10 - 1)
      token[input_len++] = c;
 }
@@ -431,25 +431,25 @@ It will run for the duration of the postingInterval var (10 Seconds by default) 
 then fill all LEDs with the latest colour to prevent LEDs being left Black.
 */
 void effectTwinkle() {
-    fill_solid( currentPalette, 16, newC);
-    // and set every fourth one to Black.
-    currentPalette[0] = CRGB::Black;
-    currentPalette[4] = CRGB::Black;
-    currentPalette[8] = CRGB::Black;
-    currentPalette[12] = CRGB::Black;
+  fill_solid( currentPalette, 16, newC);
+  // and set every fourth one to Black.
+  currentPalette[0] = CRGB::Black;
+  currentPalette[4] = CRGB::Black;
+  currentPalette[8] = CRGB::Black;
+  currentPalette[12] = CRGB::Black;
 
-    unsigned long endTime = millis() + postingInterval;
-    
-    while ( millis() <= endTime) {
-      startIndex = startIndex + 1; /* motion speed */
-      FFillLEDsFromPaletteColors(startIndex, true);
-      FastLED.delay(50);
-    }
-    for(int i = 0; i < NUM_LEDS; i++) {
-      // Set the i'th led to the latest colour
-      leds[i] = newC;
-    }
-    FastLED.show();
+  unsigned long endTime = millis() + postingInterval;
+
+  while ( millis() <= endTime) {
+    startIndex = startIndex + 1; /* motion speed */
+    FFillLEDsFromPaletteColors(startIndex, true);
+    FastLED.delay(50);
+  }
+  for(int i = 0; i < NUM_LEDS; i++) {
+    // Set the i'th led to the latest colour
+    leds[i] = newC;
+  }
+  FastLED.show();
 }
 
 /*
@@ -458,31 +458,31 @@ This effect creates a brighter led of the latest colour and cylons
 back and forth across the stip.
 */
 void effectSparkle() {
-	// First slide the led in one direction
-	for(int i = 0; i < NUM_LEDS; i++) {
-		// Set the i'th led to the latest colour with extra brightness
-		leds[i] = newC;
-		leds[i] += 25;
-		// Show the leds
-		FastLED.delay(50);
-		// Set the i'th led to the latest colour
-		leds[i] = newC;
-		// Show the leds and loop
-		FastLED.delay(50);
-	}
+  // First slide the led in one direction
+  for(int i = 0; i < NUM_LEDS; i++) {
+    // Set the i'th led to the latest colour with extra brightness
+    leds[i] = newC;
+    leds[i] += 25;
+    // Show the leds
+    FastLED.delay(50);
+    // Set the i'th led to the latest colour
+    leds[i] = newC;
+    // Show the leds and loop
+    FastLED.delay(50);
+  }
 
-	// Now go in the other direction.  
+  // Now go in the other direction.  
   for(int i = NUM_LEDS; i >= 0; i--) {
-		// Set the i'th led to the latest colour with extra brightness 
-		leds[i] = newC;
-		leds[i] += 25;
-		// Show the leds
-		FastLED.delay(50);
-		// Set the i'th led to the latest colour
-		leds[i] = newC;
-		// Show the leds and loop
-		FastLED.delay(50);
-	}
+    // Set the i'th led to the latest colour with extra brightness 
+    leds[i] = newC;
+    leds[i] += 25;
+    // Show the leds
+    FastLED.delay(50);
+    // Set the i'th led to the latest colour
+    leds[i] = newC;
+    // Show the leds and loop
+    FastLED.delay(50);
+  }
 }
 
 //// Random colour generator which was used for offline testing
