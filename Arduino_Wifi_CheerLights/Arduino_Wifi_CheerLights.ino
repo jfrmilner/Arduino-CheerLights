@@ -108,29 +108,28 @@ void setup() {
   // you're connected now, so print out the status:
   printWifiStatus();
   
-      // Uncomment/edit one of the following lines for your leds arrangement.
-      // FastLED.addLeds<TM1803, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<TM1804, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<TM1809, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<WS2811, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<WS2812, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<WS2812B, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
-      // FastLED.addLeds<UCS1903, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<UCS1903B, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<GW6205, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<GW6205_400, DATA_PIN, RGB>(leds, NUM_LEDS);
-      
-      // FastLED.addLeds<WS2801, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<SM16716, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<LPD8806, RGB>(leds, NUM_LEDS);
+  // Uncomment/edit one of the following lines for your leds arrangement.
+  // FastLED.addLeds<TM1803, DATA_PIN, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<TM1804, DATA_PIN, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<TM1809, DATA_PIN, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<WS2811, DATA_PIN, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<WS2812, DATA_PIN, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<WS2812B, DATA_PIN, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
+  // FastLED.addLeds<UCS1903, DATA_PIN, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<UCS1903B, DATA_PIN, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<GW6205, DATA_PIN, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<GW6205_400, DATA_PIN, RGB>(leds, NUM_LEDS);
+  
+  // FastLED.addLeds<WS2801, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<SM16716, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<LPD8806, RGB>(leds, NUM_LEDS);
 
-         FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<SM16716, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<LPD8806, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
+  FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<SM16716, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
+  // FastLED.addLeds<LPD8806, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 
-
-      }
+}
 
 
 
@@ -140,9 +139,9 @@ void loop() {
   
   //Debug - Check RAM usage
   if (freeRam() != freeRamCheck) {
-  Serial.print(F("FreeRam: "));
-  Serial.println(freeRam());
-  freeRamCheck = freeRam();
+    Serial.print(F("FreeRam: "));
+    Serial.println(freeRam());
+    freeRamCheck = freeRam();
   }
   
   // Clear XML Match Check for next loop 
@@ -155,10 +154,10 @@ void loop() {
     // purposes only:
     //Serial.write(c);
     
-      //read char by char HTTP request until XML Colour match
-      if (xMLmatch == false) {
-        handle_input(c);
-      }
+    //read char by char HTTP request until XML Colour match
+    if (xMLmatch == false) {
+      handle_input(c);
+    }
   }
 
   // if ten seconds have passed since your last connection,
@@ -181,20 +180,20 @@ void loop() {
     oldC = newC;
   }
   
- // trigger effect
+  // trigger effect
   if (noChangeCount >= 2) {
-      unsigned long endTime = millis() + postingInterval;
-      
-      if (effectSelection) { Serial.println(F("run twinkle")); }
-      else {Serial.println(F("run sparkle"));}
-      
-        while ( millis() <= endTime) {
-         if (effectSelection) { effectTwinkle(); }
-         else { effectSparkle();}
-        }
-      noChangeCount = 0;
-      // Toggle effect
-      effectSelection = !effectSelection;
+    unsigned long endTime = millis() + postingInterval;
+
+    if (effectSelection) { Serial.println(F("run twinkle")); }
+    else {Serial.println(F("run sparkle"));}
+
+    while ( millis() <= endTime) {
+      if (effectSelection) { effectTwinkle(); }
+      else { effectSparkle();}
+    }
+    noChangeCount = 0;
+    // Toggle effect
+    effectSelection = !effectSelection;
   }
   
 }
@@ -247,28 +246,28 @@ void printWifiStatus() {
 
 void strMatchToCRGB(String strMatch) {
 
-if (strMatch == strMatchPrevious) {
-  Serial.println(F("No Change"));
-  noChangeCount++;
-  return;
-}
+  if (strMatch == strMatchPrevious) {
+    Serial.println(F("No Change"));
+    noChangeCount++;
+    return;
+  }
 
-if      (strMatch == "black")                                 {Serial.println("black");              newC = CRGB::Black;}
-else if (strMatch == "red")                                   {Serial.println("red");                newC = CRGB::Red;}
-else if (strMatch == "green")                                 {Serial.println("green");              newC = CRGB::Green;}
-else if (strMatch == "blue")                                  {Serial.println("blue");               newC = CRGB::Blue;}
-else if (strMatch == "cyan")                                  {Serial.println("cyan");               newC = CRGB::Cyan;}
-else if (strMatch == "white")                                 {Serial.println("white");              newC = CRGB::White;}
-else if (strMatch == "warmwhite" || strMatch == "oldlace" )   {Serial.println("warmwhite/oldlace");  newC = CRGB::OldLace; }
-else if (strMatch == "purple")                                {Serial.println("purple");             newC = CRGB::Purple;}
-else if (strMatch == "magenta")                               {Serial.println("magenta");            newC = CRGB::Magenta;}
-else if (strMatch == "yellow")                                {Serial.println("yellow");             newC = CRGB::Yellow;}
-else if (strMatch == "orange")                                {Serial.println("orange");             newC = CRGB::OrangeRed;}
-else if (strMatch == "pink")                                  {Serial.println("pink");               newC = CRGB::DeepPink;}
+  if      (strMatch == "black")                                 {Serial.println("black");              newC = CRGB::Black;}
+  else if (strMatch == "red")                                   {Serial.println("red");                newC = CRGB::Red;}
+  else if (strMatch == "green")                                 {Serial.println("green");              newC = CRGB::Green;}
+  else if (strMatch == "blue")                                  {Serial.println("blue");               newC = CRGB::Blue;}
+  else if (strMatch == "cyan")                                  {Serial.println("cyan");               newC = CRGB::Cyan;}
+  else if (strMatch == "white")                                 {Serial.println("white");              newC = CRGB::White;}
+  else if (strMatch == "warmwhite" || strMatch == "oldlace" )   {Serial.println("warmwhite/oldlace");  newC = CRGB::OldLace; }
+  else if (strMatch == "purple")                                {Serial.println("purple");             newC = CRGB::Purple;}
+  else if (strMatch == "magenta")                               {Serial.println("magenta");            newC = CRGB::Magenta;}
+  else if (strMatch == "yellow")                                {Serial.println("yellow");             newC = CRGB::Yellow;}
+  else if (strMatch == "orange")                                {Serial.println("orange");             newC = CRGB::OrangeRed;}
+  else if (strMatch == "pink")                                  {Serial.println("pink");               newC = CRGB::DeepPink;}
 
-strMatchPrevious = strMatch;
-colourChangeRequired = true;
-noChangeCount = 0;
+  strMatchPrevious = strMatch;
+  colourChangeRequired = true;
+  noChangeCount = 0;
 }
 
 //Show freeRam - http://playground.arduino.cc/Code/AvailableMemory
@@ -278,110 +277,109 @@ int freeRam () {
   return (int) &v - (__brkval == 0 ? (int) &__heap_start : (int) __brkval); 
 }
 
-void handle_input(uint8_t c)
-{
+void handle_input(uint8_t c){
 
-String colour;
-char red [] = "red";
-char green [] = "green";
-char blue [] = "blue";
-char cyan [] = "cyan";
-char white [] = "white";
-char warmwhite [] = "warmwhite";
-char purple [] = "purple";
-char magenta [] = "magenta";
-char yellow [] = "yellow";
-char orange [] = "orange";
-char pink [] = "pink";
-char oldlace [] = "oldlace";
+  String colour;
+  char red [] = "red";
+  char green [] = "green";
+  char blue [] = "blue";
+  char cyan [] = "cyan";
+  char white [] = "white";
+  char warmwhite [] = "warmwhite";
+  char purple [] = "purple";
+  char magenta [] = "magenta";
+  char yellow [] = "yellow";
+  char orange [] = "orange";
+  char pink [] = "pink";
+  char oldlace [] = "oldlace";
 
 
-    /* looking for xml code in the response - <field1>warmwhite</field1>
-     * c = '>', then a new tag sequence is starting
-     */ 
-    if (c == '>') {
-        input_len = 0;
-        return;
+  /* looking for xml code in the response - <field1>warmwhite</field1>
+  * c = '>', then a new tag sequence is starting
+  */ 
+  if (c == '>') {
+      input_len = 0;
+      return;
+  }
+
+  /* c = '>', a tag sequence is complete.
+  * Check if we have a colour match
+  */
+  if (c == '<') {
+    //Serial.println("End");
+    token[input_len] = 0;
+
+    if (strncmp(token, red, 3) == 0) {
+      xMLmatch = true;
+    }
+    else if (strncmp(token, green, 10) == 0) {
+      xMLmatch = true;
+    }
+    else if (strncmp(token, blue, 10) == 0) {
+      xMLmatch = true;
+    }
+    else if (strncmp(token, cyan, 10) == 0) {
+      xMLmatch = true;
+    }
+    else if (strncmp(token, white, 10) == 0) {
+      xMLmatch = true;
+    }
+    else if (strncmp(token, warmwhite, 9) == 0) {
+      xMLmatch = true;
+    }
+    else if (strncmp(token, purple, 10) == 0) {
+      xMLmatch = true;
+    }
+    else if (strncmp(token, magenta, 10) == 0) {
+      xMLmatch = true;
+    }
+    else if (strncmp(token, yellow, 10) == 0) {
+      xMLmatch = true;
+    }
+    else if (strncmp(token, orange, 10) == 0) {
+      xMLmatch = true;
+    }
+    else if (strncmp(token, pink, 10) == 0) {
+      xMLmatch = true;
+    }
+    else if (strncmp(token, oldlace, 10) == 0) {
+      xMLmatch = true;
+    }
+    else {
+      return;
     }
 
-    /* c = '>', a tag sequence is complete.
-     * Check if we have a colour match
-     */
-    if (c == '<') {
-      //Serial.println("End");
-       token[input_len] = 0;
-       
-       if (strncmp(token, red, 3) == 0) {
-         xMLmatch = true;
-       }
-       else if (strncmp(token, green, 10) == 0) {
-         xMLmatch = true;
-       }
-       else if (strncmp(token, blue, 10) == 0) {
-         xMLmatch = true;
-       }
-       else if (strncmp(token, cyan, 10) == 0) {
-         xMLmatch = true;
-       }
-       else if (strncmp(token, white, 10) == 0) {
-         xMLmatch = true;
-       }
-       else if (strncmp(token, warmwhite, 9) == 0) {
-         xMLmatch = true;
-       }
-       else if (strncmp(token, purple, 10) == 0) {
-         xMLmatch = true;
-       }
-       else if (strncmp(token, magenta, 10) == 0) {
-         xMLmatch = true;
-       }
-       else if (strncmp(token, yellow, 10) == 0) {
-         xMLmatch = true;
-       }
-       else if (strncmp(token, orange, 10) == 0) {
-         xMLmatch = true;
-       }
-       else if (strncmp(token, pink, 10) == 0) {
-         xMLmatch = true;
-       }
-       else if (strncmp(token, oldlace, 10) == 0) {
-         xMLmatch = true;
-       }
-       else {
-       return;
-       }
-       
-       if (xMLmatch) {
-       colour = token;
-//       Serial.print("token:");
-//       Serial.println(strlen (token) );
-       Serial.print("Got colour: ");
-       Serial.println(colour);
-       strMatchToCRGB(colour);
-        }
+    if (xMLmatch) {
+      colour = token;
+      //Serial.print("token:");
+      //Serial.println(strlen (token) );
+      Serial.print("Got colour: ");
+      Serial.println(colour);
+      strMatchToCRGB(colour);
     }
+  }
 
-    /* 
-    otherwise we have an input character
-     */
-    if (input_len <= 10 - 1)
-       token[input_len++] = c;
+  /* 
+  otherwise we have an input character
+  */
+  if (input_len <= 10 - 1)
+     token[input_len++] = c;
 }
 
 
 void startup() {
-//Startup Routine
- static boolean startup;
+  //Startup Routine
+  static boolean startup;
   if (startup == 0) {
-      Serial.println(F("Running Startup Routine"));
-      for( int i = 0; i < NUM_LEDS; i++) {
+    Serial.println(F("Running Startup Routine"));
+    for( int i = 0; i < NUM_LEDS; i++) {
       leds[i] = CRGB::White;
       FastLED.delay(30);
     }
-      for( int i = 0; i < NUM_LEDS; i++) {
+    for( int i = 0; i < NUM_LEDS; i++) {
       leds[i] = CRGB::Black;
       FastLED.delay(30);
-     startup = true;
+      startup = true;
     }
   }
 }
@@ -400,31 +398,29 @@ void transitionBlend(CRGB oldC, CRGB newC, boolean tDirection) {
 }
 
 // Forward/Top Down Transition
-void FFillLEDsFromPaletteColors(uint8_t colorIndex, boolean limit)
-{
+void FFillLEDsFromPaletteColors(uint8_t colorIndex, boolean limit){
   uint8_t brightness = 255;
-    for( int i = 0; i < NUM_LEDS; i++) {
-      leds[i] = ColorFromPalette( currentPalette, colorIndex, brightness, currentBlending);
-      colorIndex += 1;
-      //Limit colourIndex to prevent overlap
-      if (colorIndex == 255-NUM_LEDS && limit == true) {
+  for( int i = 0; i < NUM_LEDS; i++) {
+    leds[i] = ColorFromPalette( currentPalette, colorIndex, brightness, currentBlending);
+    colorIndex += 1;
+    //Limit colourIndex to prevent overlap
+    if (colorIndex == 255-NUM_LEDS && limit == true) {
       transitionComplete = true;
-      }
     }
+  }
 }
 
 // Reverse/Bottom Up Transition
-void RFillLEDsFromPaletteColors(uint8_t colorIndex, boolean limit)
-{
+void RFillLEDsFromPaletteColors(uint8_t colorIndex, boolean limit){
   uint8_t brightness = 255;
-    for(int i = NUM_LEDS-1; i >= 0; i--) {
-      leds[i] = ColorFromPalette( currentPalette, colorIndex, brightness, currentBlending);
-      colorIndex += 1;
-      //Limit colourIndex to prevent overlap
-      if (colorIndex == 255-NUM_LEDS && limit == true) {
+  for(int i = NUM_LEDS-1; i >= 0; i--) {
+    leds[i] = ColorFromPalette( currentPalette, colorIndex, brightness, currentBlending);
+    colorIndex += 1;
+    //Limit colourIndex to prevent overlap
+    if (colorIndex == 255-NUM_LEDS && limit == true) {
       transitionComplete = true;
-      }
     }
+  }
 }
 
 
@@ -435,25 +431,25 @@ It will run for the duration of the postingInterval var (10 Seconds by default) 
 then fill all LEDs with the latest colour to prevent LEDs being left Black.
 */
 void effectTwinkle() {
-    fill_solid( currentPalette, 16, newC);
-    // and set every fourth one to Black.
-    currentPalette[0] = CRGB::Black;
-    currentPalette[4] = CRGB::Black;
-    currentPalette[8] = CRGB::Black;
-    currentPalette[12] = CRGB::Black;
+  fill_solid( currentPalette, 16, newC);
+  // and set every fourth one to Black.
+  currentPalette[0] = CRGB::Black;
+  currentPalette[4] = CRGB::Black;
+  currentPalette[8] = CRGB::Black;
+  currentPalette[12] = CRGB::Black;
 
-    unsigned long endTime = millis() + postingInterval;
-    
-      while ( millis() <= endTime) {
-      startIndex = startIndex + 1; /* motion speed */
-      FFillLEDsFromPaletteColors(startIndex, true);
-      FastLED.delay(50);
-    }
-    for(int i = 0; i < NUM_LEDS; i++) {
-		// Set the i'th led to the latest colour
-		leds[i] = newC;
-    }
-    FastLED.show();
+  unsigned long endTime = millis() + postingInterval;
+
+  while ( millis() <= endTime) {
+    startIndex = startIndex + 1; /* motion speed */
+    FFillLEDsFromPaletteColors(startIndex, true);
+    FastLED.delay(50);
+  }
+  for(int i = 0; i < NUM_LEDS; i++) {
+    // Set the i'th led to the latest colour
+    leds[i] = newC;
+  }
+  FastLED.show();
 }
 
 /*
@@ -462,31 +458,31 @@ This effect creates a brighter led of the latest colour and cylons
 back and forth across the stip.
 */
 void effectSparkle() {
-	// First slide the led in one direction
-	for(int i = 0; i < NUM_LEDS; i++) {
-		// Set the i'th led to the latest colour with extra brightness
-		leds[i] = newC;
-		leds[i] += 25;
-		// Show the leds
-		FastLED.delay(50);
-		// Set the i'th led to the latest colour
-		leds[i] = newC;
-		// Show the leds and loop
-		FastLED.delay(50);
-	}
+  // First slide the led in one direction
+  for(int i = 0; i < NUM_LEDS; i++) {
+    // Set the i'th led to the latest colour with extra brightness
+    leds[i] = newC;
+    leds[i] += 25;
+    // Show the leds
+    FastLED.delay(50);
+    // Set the i'th led to the latest colour
+    leds[i] = newC;
+    // Show the leds and loop
+    FastLED.delay(50);
+  }
 
-	// Now go in the other direction.  
-	for(int i = NUM_LEDS; i >= 0; i--) {
-		// Set the i'th led to the latest colour with extra brightness 
-		leds[i] = newC;
-		leds[i] += 25;
-		// Show the leds
-		FastLED.delay(50);
-		// Set the i'th led to the latest colour
-		leds[i] = newC;
-		// Show the leds and loop
-		FastLED.delay(50);
-	}
+  // Now go in the other direction.  
+  for(int i = NUM_LEDS; i >= 0; i--) {
+    // Set the i'th led to the latest colour with extra brightness 
+    leds[i] = newC;
+    leds[i] += 25;
+    // Show the leds
+    FastLED.delay(50);
+    // Set the i'th led to the latest colour
+    leds[i] = newC;
+    // Show the leds and loop
+    FastLED.delay(50);
+  }
 }
 
 //// Random colour generator which was used for offline testing
