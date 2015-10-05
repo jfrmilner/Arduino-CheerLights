@@ -69,7 +69,7 @@ boolean xMLmatch = false;
 // Define the array of leds
 CRGB leds[NUM_LEDS];
 CRGBPalette16 currentPalette;
-TBlendType    currentBlending = LINEARBLEND;
+TBlendType    currentBlending = BLEND;
 uint8_t startIndex = 0;
 CRGB newC = CRGB::Black;
 CRGB oldC = CRGB::Black;
