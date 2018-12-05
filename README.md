@@ -1,10 +1,10 @@
 # Arduino CheerLights
 
 ### Sketches
-|**Name**|**Sketch**|**Description**|**Hardware**|
+|**Name**|**Sketch Link**|**Description**|**Hardware**|
 |---|---|---|---|
-|WIFI Shield Version|CheerLights_OfficialWIFIShield.ino||https://store.arduino.cc/arduino-wifi-shield|
-|ESP8266_SingleRGBLED|CheerLights_ESP8266_SingleRGBLED.ino|| 1xESP8266, 1x Common Anode RGB LED|
+|WIFI Shield Version|[<b>Sketch</b>](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Sketches/CheerLights_OfficialWIFIShield/CheerLights_OfficialWIFIShield.ino)|Retired|[Uno](https://store.arduino.cc/arduino-uno-rev3) + [Wifi Shield](https://store.arduino.cc/arduino-wifi-shield) + [LEDs (FastLED compatible)](https://github.com/FastLED/FastLED/wiki/Chipset-reference)|
+|ESP8266_SingleRGBLED|[<b>Sketch</b>](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Sketches/CheerLights_ESP8266_SingleRGBLED/CheerLights_ESP8266_SingleRGBLED.ino)|| [ESP8266](https://wiki.wemos.cc/products:d1:d1_mini) + [Common Anode RGB LED](https://www.sparkfun.com/products/10820)|
 
 
 
