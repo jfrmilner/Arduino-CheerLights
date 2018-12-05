@@ -47,9 +47,6 @@ char server[] = "api.thingspeak.com";
 unsigned long lastConnectionTime = 0;            // last time you connected to the server, in milliseconds
 const unsigned long postingInterval = 10L * 1000L; // delay between updates, in milliseconds
 
-//Debug RAM check function
-int freeRamCheck = freeRam();
-
 //handle_input function global vars
 char token[30];
 uint8_t input_len = 0;
@@ -69,7 +66,7 @@ boolean xMLmatch = false;
 // Define the array of leds
 CRGB leds[NUM_LEDS];
 CRGBPalette16 currentPalette;
-TBlendType    currentBlending = BLEND;
+TBlendType    currentBlending = LINEARBLEND;
 uint8_t startIndex = 0;
 CRGB newC = CRGB::Black;
 CRGB oldC = CRGB::Black;
@@ -136,13 +133,6 @@ void setup() {
 void loop() {
   // Run once Startup function to clear LEDs
   startup();
-  
-  //Debug - Check RAM usage
-  if (freeRam() != freeRamCheck) {
-    Serial.print(F("FreeRam: "));
-    Serial.println(freeRam());
-    freeRamCheck = freeRam();
-  }
   
   // Clear XML Match Check for next loop 
   boolean xMLmatch = false;
