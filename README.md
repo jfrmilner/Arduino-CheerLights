@@ -1,5 +1,11 @@
 # Arduino CheerLights
 
+### Sketches
+|**Name**|**Sketch**|**Description**|**Hardware**|
+|---|---|---|---|
+|WIFI Shield Version|CheerLights_OfficialWIFIShield.ino||https://store.arduino.cc/arduino-wifi-shield|
+|ESP8266_SingleRGBLED|CheerLights_ESP8266_SingleRGBLED.ino|| 1xESP8266, 1x Common Anode RGB LED|
+
 Arduino Uno + Arduino WiFi Shield CheerLights Sketch.
 
 YouTube video (Click Below Image to start) 
