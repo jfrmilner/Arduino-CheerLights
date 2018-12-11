@@ -12,7 +12,7 @@
                '='      '='      '='      '='      '='      '=' 
  * Single RGB by jfrmilner
  * https://github.com/jfrmilner/Arduino-CheerLights
- * Demo - https://twitter.com/jfrmilner/status/674316344968486912
+ * Demo - https://twitter.com/jfrmilner/status/1072287635396153346
  */
 
 // libraries
