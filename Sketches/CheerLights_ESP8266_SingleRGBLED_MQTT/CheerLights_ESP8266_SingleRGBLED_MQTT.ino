@@ -32,9 +32,10 @@ PubSubClient client(espClient);
  *   Choose Account > My Profile to see your MQTT API key. https://uk.mathworks.com/help/thingspeak/subscribetoachannelfieldfeed.html
  *   
  */
+String chipId = String(ESP.getChipId());
 const char* MQTT_SERVER = "mqtt.thingspeak.com";
-const char* MQTT_CLIENTNAME = String(ESP.getChipId()).c_str();
-const char* MQTT_USERNAME = String(ESP.getChipId()).c_str();
+const char* MQTT_CLIENTNAME = chipId.c_str();
+const char* MQTT_USERNAME = chipId.c_str();
 const char* MQTT_APIKEY = "CHANGEME";
 
 // LED Pins
