@@ -1,7 +1,7 @@
 /*
  * CheerLights for the ESP8266 using the Arduino IDE
  * Protocol: MQTT
- * Setup: Edit the WiFiMulti.addAPP with your SSID and Password, and add your ThingSpeak MQTT_APIKEY (Tip: Search for the text CHANGEME)
+ * Setup: Edit the WiFiMulti.addAPP() with your SSID and Password (Tip: Search for the text CHANGEME)
                  .--._.--.--.__.--.--.__.--.--.__.--.--._.--.
                _(_      _Y_      _Y_      _Y_      _Y_      _)_
               [___]    [___]    [___]    [___]    [___]    [___]
@@ -27,16 +27,13 @@ WiFiClient espClient;
 // mqtt client
 PubSubClient client(espClient);
 /*  
- *   ThingSpeak™ MQTT requires an MQTT API Key to subscribe to channel updates for both private and public channels. 
- *   Supply any unique user name and your MQTT API Key as a password parameter to the ThingSpeak MQTT broker when connecting. 
- *   Choose Account > My Profile to see your MQTT API key. https://uk.mathworks.com/help/thingspeak/subscribetoachannelfieldfeed.html
- *   
+ *   CheerLights with MQTT!
+ *   MQTT allows for real-time subscription to the CheerLights feed. When someone changes the colour, the colour gets published 
+ *   immediately over the “HEX” topic. MQTT also allows for your devices to stay connected versus polling the API for changes.
  */
-String chipId = String(ESP.getChipId());
-const char* MQTT_SERVER = "mqtt.thingspeak.com";
+String chipId = String(ESP.getChipId(), HEX);
+const char* MQTT_SERVER = "mqtt.cheerlights.com";
 const char* MQTT_CLIENTNAME = chipId.c_str();
-const char* MQTT_USERNAME = chipId.c_str();
-const char* MQTT_APIKEY = "CHANGEME";
 
 // LED Pins
 const int RED_PIN = 12; // aka D6
@@ -58,11 +55,11 @@ void reconnect() {
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     // Attempt to connect
-    if (client.connect(MQTT_CLIENTNAME, MQTT_USERNAME, MQTT_APIKEY)) {
+    if (client.connect(MQTT_CLIENTNAME)) {
       Serial.println("connected");
       digitalWrite(LED_BUILTIN, LOW);
       //subscribe (topic, [qos])
-      client.subscribe("channels/1417/subscribe/fields/field2", 0);
+      client.subscribe("hex", 0);
     } else {
       digitalWrite(LED_BUILTIN, HIGH);
       Serial.print("failed, rc=");
@@ -98,9 +95,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
           r = (colour & 0xFF0000) >> 16;
           g = (colour & 0x00FF00) >>  8;
           b = (colour & 0x0000FF);
-          r = map(r, 0, 255, 1023, 0); //The values of the colours are mapped
-          g = map(g, 0, 255, 1023, 0); //the opposite way because this RGB LED
-          b = map(b, 0, 255, 1023, 0); //is "Common-Anode". Also, the PWM on an ESP is 10bit.
+          r = map(r, 0, 255, 1023, 0); //The values of the colours are mapped the opposite way because this RGB LED
+          g = map(g, 0, 255, 1023, 0); //is "Common-Anode". If you have a "Common-Cathode" see https://github.com/jfrmilner/Arduino-CheerLights/issues/2
+          b = map(b, 0, 255, 1023, 0); //Also, the PWM on an ESP is 10bit.
           Serial.println(r);
           Serial.println(g);
           Serial.println(b);
@@ -143,6 +140,3 @@ void loop() {
   client.loop(); // process mqtt tasks
   delay(10);
 }
-
-
-
