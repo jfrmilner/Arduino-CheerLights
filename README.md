@@ -9,14 +9,22 @@
 
 # Demos
 ## ESP8266 with single common anode/cathode RGB LED version (Easy)
-Red Green Purple #cheerlights #MQTT protocol demo with two seperate #Arduino trees🌲, both in perfect sync, so much better than polling HTTP!
+This demo uses the [ESP8266_SingleRGBLED](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Sketches/CheerLights_ESP8266_SingleRGBLED_MQTT/CheerLights_ESP8266_SingleRGBLED_MQTT.ino) sketch with the MQTT protocol. Here we can see a tweet for “Red Green Purple #cheerlights” and how it changes two separate trees each with their own microcontroller, notice how they’re in perfect sync and no colours were missed – this is a key advantage over HTTP polling! 
+
+
 
 https://user-images.githubusercontent.com/3640168/205512752-217b85a8-deb1-4284-80e5-d19a2acb4873.mp4
 
 
 
 ## ESP8266 with multiple RGB LEDs (Addressable Strip/Pixels) (FastLED) version (Advanced)
+Colour Wipe Demo - Fades LEDs to Black then populates the new colour either bottom up or top down
+
 https://user-images.githubusercontent.com/3640168/205511934-5211cd09-e835-44e0-9252-703d920e78c4.mp4
+
+Shuffle In Demo - Shuffles in a new colour one pixel at a time
+
+https://user-images.githubusercontent.com/3640168/205514276-fbe0be17-f728-4031-9431-8a6b12e9e94f.mp4
 
 
 
