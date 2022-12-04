@@ -3,28 +3,27 @@
 ### Sketches
 |**Name**|**Protocol**|**Sketch Link**|**Notes**|**Hardware**|
 |---|---|---|---|---|
-|WIFI Shield Version|HTTP|[<b>Sketch</b>](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Sketches/CheerLights_OfficialWIFIShield/CheerLights_OfficialWIFIShield.ino)|Retired Hardware|[Uno](https://store.arduino.cc/arduino-uno-rev3) + [Wifi Shield](https://store.arduino.cc/arduino-wifi-shield) + [LEDs (FastLED compatible)](https://github.com/FastLED/FastLED/wiki/Chipset-reference)|
 |ESP8266_SingleRGBLED|HTTP|[<b>Sketch</b>](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Sketches/CheerLights_ESP8266_SingleRGBLED/CheerLights_ESP8266_SingleRGBLED.ino)|| [ESP8266](https://wiki.wemos.cc/products:d1:d1_mini) + [Common Anode RGB LED](https://www.sparkfun.com/products/10820)|
 |ESP8266_SingleRGBLED|MQTT|[<b>Sketch</b>](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Sketches/CheerLights_ESP8266_SingleRGBLED_MQTT/CheerLights_ESP8266_SingleRGBLED_MQTT.ino)|| [ESP8266](https://wiki.wemos.cc/products:d1:d1_mini) + [Common Anode RGB LED](https://www.sparkfun.com/products/10820)|
 
 
 # Demos
-## Arduino Official WiFi Shield Version (Retired)
+## ESP8266 with single common anode/cathode RGB LED version (Easy)
+Red Green Purple #cheerlights #MQTT protocol demo with two seperate #Arduino trees🌲, both in perfect sync, so much better than polling HTTP!
 
-### Work Office Christmas Tree
+https://user-images.githubusercontent.com/3640168/205512752-217b85a8-deb1-4284-80e5-d19a2acb4873.mp4
 
-![GifTree](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Images/UTKG5168.gif)
 
-### Home Office Christmas Tree
-YouTube video (Click Below Image to start) 
 
-[![Alt text](https://img.youtube.com/vi/-x0ywTV6_IY/0.jpg)](https://www.youtube.com/watch?v=-x0ywTV6_IY)
+## ESP8266 with multiple RGB LEDs (Addressable Strip/Pixels) (FastLED) version (Advanced)
+https://user-images.githubusercontent.com/3640168/205511934-5211cd09-e835-44e0-9252-703d920e78c4.mp4
+
+
 
 ### Andy's Tree
 ![Tree](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Images/AMGoldschmidt_Tree2018_Tweet.jpg)
 
-## ESP8266 with single common anode RGB LED
-![Tree](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Images/ESP8266_SingleRGBLED_Tweet.JPG)
+
 
 
 More details can be found here: http://jfrmilner.co.uk/christmasiotree
