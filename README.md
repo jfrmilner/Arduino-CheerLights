@@ -1,4 +1,5 @@
-# Arduino CheerLights
+# Arduino CheerLights 🎄
+
 
 ### Sketches
 |**Name**|**Protocol**|**Sketch Link**|**Notes**|**Hardware**|
@@ -18,11 +19,13 @@ https://user-images.githubusercontent.com/3640168/205512752-217b85a8-deb1-4284-8
 
 
 ## ESP8266 with multiple RGB LEDs (Addressable Strip/Pixels) (FastLED) version (Advanced)
-Colour Wipe Demo - Fades LEDs to Black then populates the new colour either bottom up or top down
+This demo uses the CheerLights_ESP8266_FastLED_MQTT sketch. This version is for controlling Addressable RGB LEDs Strip/Pixels that are compatible with the [FastLED library](https://github.com/FastLED/FastLED/wiki/Chipset-reference). I’ve created some transition effects for colour changes as a extra bonus, demos of these can be seen below!
+
+Transition Effect: Colour Wipe Demo - Fades LEDs to Black then populates the new colour either bottom up or top down
 
 https://user-images.githubusercontent.com/3640168/205511934-5211cd09-e835-44e0-9252-703d920e78c4.mp4
 
-Shuffle In Demo - Shuffles in a new colour one pixel at a time
+Transition Effect:Shuffle In Demo - Shuffles in a new colour one pixel at a time
 
 https://user-images.githubusercontent.com/3640168/205514276-fbe0be17-f728-4031-9431-8a6b12e9e94f.mp4
 
