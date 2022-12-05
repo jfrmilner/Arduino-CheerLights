@@ -1,12 +1,15 @@
 # Arduino CheerLights 🎄
 
+This repository contains ESP8266 Arduino Sketches used by my CheerLights projects.
+CheerLights is an Internet of Things (IoT) project where lights around the world are synchronised to one colour. That colour is set by anyone on Twitter who mentions CheerLights and a colour. Learn more about CheerLights [here](https://cheerlights.com/learn/).
+ 
 
 ### Sketches
 |**Name**|**Protocol**|**Sketch Link**|**Notes**|**Hardware**|
 |---|---|---|---|---|
 |ESP8266_SingleRGBLED|HTTP|[<b>Sketch</b>](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Sketches/CheerLights_ESP8266_SingleRGBLED/CheerLights_ESP8266_SingleRGBLED.ino)|| [ESP8266](https://wiki.wemos.cc/products:d1:d1_mini) + [Common Anode RGB LED](https://www.sparkfun.com/products/10820)|
 |ESP8266_SingleRGBLED|MQTT|[<b>Sketch</b>](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Sketches/CheerLights_ESP8266_SingleRGBLED_MQTT/CheerLights_ESP8266_SingleRGBLED_MQTT.ino)|| [ESP8266](https://wiki.wemos.cc/products:d1:d1_mini) + [Common Anode RGB LED](https://www.sparkfun.com/products/10820)|
-
+|ESP8266_FastLED|MQTT|[<b>Sketch</b>](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Sketches/CheerLights_ESP8266_FastLED_MQTT/CheerLights_ESP8266_FastLED_MQTT.ino)|| [ESP8266](https://wiki.wemos.cc/products:d1:d1_mini) + [LEDs (FastLED compatible)](https://github.com/FastLED/FastLED/wiki/Chipset-reference)|
 
 # Demos
 ## ESP8266 with single common anode/cathode RGB LED version (Easy)
@@ -19,7 +22,7 @@ https://user-images.githubusercontent.com/3640168/205512752-217b85a8-deb1-4284-8
 
 
 ## ESP8266 with multiple RGB LEDs (Addressable Strip/Pixels) (FastLED) version (Advanced)
-This demo uses the CheerLights_ESP8266_FastLED_MQTT sketch. This version is for controlling Addressable RGB LEDs Strip/Pixels that are compatible with the [FastLED library](https://github.com/FastLED/FastLED/wiki/Chipset-reference). I’ve created some transition effects for colour changes as a extra bonus, demos of these can be seen below!
+This demo uses the [ESP8266_FastLED](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Sketches/CheerLights_ESP8266_FastLED_MQTT/CheerLights_ESP8266_FastLED_MQTT.ino) sketch. This version is for controlling Addressable RGB LEDs Strip/Pixels that are compatible with the [FastLED library](https://github.com/FastLED/FastLED/wiki/Chipset-reference). I’ve created some transition effects for colour changes as an extra bonus, demos of these can be seen below!
 
 Transition Effect: Colour Wipe Demo - Fades LEDs to Black then populates the new colour one LED at a time from either bottom up or top down. This demo shows Cyan > Magenta > White.
 
@@ -37,7 +40,8 @@ https://user-images.githubusercontent.com/3640168/205519901-21d8b490-6f95-465e-9
 
 
 
-
+## Community Usage
+### If you use this code then please tweet me (@jfrmilner) a picture of your project!
 ### Andy's Tree
 ![Tree](https://github.com/jfrmilner/Arduino-CheerLights/blob/master/Images/AMGoldschmidt_Tree2018_Tweet.jpg)
 
