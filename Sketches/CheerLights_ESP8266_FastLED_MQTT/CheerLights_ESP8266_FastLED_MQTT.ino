@@ -98,7 +98,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
       // Run Colour Transition (Old to New)
       // randomTransition
-      int var = random(2, 4);
+      int var = random(2, 5);
       //          int var = 2; //Static Transition - Debug
       Serial.print("Transition:");
       Serial.println(var);
