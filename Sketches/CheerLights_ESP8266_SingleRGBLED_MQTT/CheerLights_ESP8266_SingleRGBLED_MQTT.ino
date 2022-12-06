@@ -9,7 +9,7 @@
              |::   |  |::   |  |::   |  |::   |  |::   |  |::   |
              \::.  /  \::.  /  \::.  /  \::.  /  \::.  /  \::.  /
          jgs  \::./    \::./    \::./    \::./    \::./    \::./
-               '='      '='      '='      '='      '='      '=' 
+               '='      '='      '='      '='      '='      '='
  * Single RGB by jfrmilner
  * https://github.com/jfrmilner/Arduino-CheerLights
  * Demo - https://twitter.com/jfrmilner/status/1072287635396153346
@@ -26,9 +26,9 @@ WiFiClient espClient;
 
 // mqtt client
 PubSubClient client(espClient);
-/*  
+/*
  *   CheerLights with MQTT!
- *   MQTT allows for real-time subscription to the CheerLights feed. When someone changes the colour, the colour gets published 
+ *   MQTT allows for real-time subscription to the CheerLights feed. When someone changes the colour, the colour gets published
  *   immediately over the “HEX” topic. MQTT also allows for your devices to stay connected versus polling the API for changes.
  */
 String chipId = String(ESP.getChipId(), HEX);
@@ -36,9 +36,9 @@ const char* MQTT_SERVER = "mqtt.cheerlights.com";
 const char* MQTT_CLIENTNAME = chipId.c_str();
 
 // LED Pins
-const int RED_PIN = 12; // aka D6
-const int GREEN_PIN = 13; // aka D7
-const int BLUE_PIN = 15; // aka D8
+const int RED_PIN = 12;    // aka D6
+const int GREEN_PIN = 13;  // aka D7
+const int BLUE_PIN = 15;   // aka D8
 // colour history
 unsigned long lastColour = 0;
 
@@ -58,7 +58,7 @@ void reconnect() {
     if (client.connect(MQTT_CLIENTNAME)) {
       Serial.println("connected");
       digitalWrite(LED_BUILTIN, LOW);
-      //subscribe (topic, [qos])
+      // subscribe (topic, [qos])
       client.subscribe("hex", 0);
     } else {
       digitalWrite(LED_BUILTIN, HIGH);
@@ -72,37 +72,37 @@ void reconnect() {
 }
 
 // mqtt callback function
-void callback(char* topic, byte* payload, unsigned int length) {
+void callback(char *topic, byte *payload, unsigned int length) {
 
   // create colour c string
   char colourCStr[length];
   for (int i = 0; i < length; i++) {
     if (payload[i] != 10) {
       colourCStr[i] = (char)payload[i];
-      colourCStr[i+1] = '\0';
+      colourCStr[i + 1] = '\0';
     }
   }
 
   if ((colourCStr[0] == '#') && (strlen(colourCStr) == 7)) {
-      int r, g, b;
-      unsigned long colour = strtoul(colourCStr +1, NULL, 16); 
-      // Update LEDs only when colour changes
-      if (colour != lastColour) {
-          lastColour = colour;
-          Serial.print(">#");
-          Serial.print(colour, HEX);
-          Serial.println('<');
-          r = (colour & 0xFF0000) >> 16;
-          g = (colour & 0x00FF00) >>  8;
-          b = (colour & 0x0000FF);
-          r = map(r, 0, 255, 1023, 0); //The values of the colours are mapped the opposite way because this RGB LED
-          g = map(g, 0, 255, 1023, 0); //is "Common-Anode". If you have a "Common-Cathode" see https://github.com/jfrmilner/Arduino-CheerLights/issues/2
-          b = map(b, 0, 255, 1023, 0); //Also, the PWM on an ESP is 10bit.
-          Serial.println(r);
-          Serial.println(g);
-          Serial.println(b);
-          setcolour(r, g, b);
-      }
+    int r, g, b;
+    unsigned long colour = strtoul(colourCStr + 1, NULL, 16);
+    // Update LEDs only when colour changes
+    if (colour != lastColour) {
+      lastColour = colour;
+      Serial.print(">#");
+      Serial.print(colour, HEX);
+      Serial.println('<');
+      r = (colour & 0xFF0000) >> 16;
+      g = (colour & 0x00FF00) >> 8;
+      b = (colour & 0x0000FF);
+      r = map(r, 0, 255, 1023, 0); // The values of the colours are mapped the opposite way because this RGB LED
+      g = map(g, 0, 255, 1023, 0); // is "Common-Anode". If you have a "Common-Cathode" see https://github.com/jfrmilner/Arduino-CheerLights/issues/2
+      b = map(b, 0, 255, 1023, 0); // Also, the PWM on an ESP is 10bit.
+      Serial.println(r);
+      Serial.println(g);
+      Serial.println(b);
+      setcolour(r, g, b);
+    }
   }
 }
 
@@ -112,7 +112,7 @@ void setup() {
   pinMode(RED_PIN, OUTPUT);
   pinMode(GREEN_PIN, OUTPUT);
   pinMode(BLUE_PIN, OUTPUT);
-  setcolour(1023,1023,1023);
+  setcolour(1023, 1023, 1023);
 
   // serial
   Serial.begin(115200);
