@@ -192,12 +192,12 @@ void colourWipe(CRGB colourNew) {
   unsigned long timeRemaining = 3950 - timespanEndFade;
   unsigned long delayInterval = timeRemaining / NUM_LEDS;
 
-  //    Serial.print("timespanEndFade:");
-  //    Serial.println(timespanEndFade);
-  //    Serial.print("timeRemaining:");
-  //    Serial.println(timeRemaining);
-  //    Serial.print("delayInterval:");
-  //    Serial.println(delayInterval);
+  //  Serial.print("timespanEndFade:");
+  //  Serial.println(timespanEndFade);
+  //  Serial.print("timeRemaining:");
+  //  Serial.println(timeRemaining);
+  //  Serial.print("delayInterval:");
+  //  Serial.println(delayInterval);
 
   if ((int)random(2) == 1) {
     // bottom up
